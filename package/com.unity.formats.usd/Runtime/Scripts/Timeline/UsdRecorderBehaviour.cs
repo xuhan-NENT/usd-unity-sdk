@@ -25,6 +25,8 @@ namespace Unity.Formats.USD {
 
     bool m_isPaused = false;
     public UsdRecorderClip Clip;
+    
+    static int frameRate = 24;         // StudioV modified, for exporting camera movement in correct timestamp
 
     // ------------------------------------------------------------------------------------------ //
     // Recording Control.
@@ -153,21 +155,21 @@ namespace Unity.Formats.USD {
       if (!IsPlaying()) {
         return;
       }
-      StopRecording(playable.GetTime());
+      StopRecording(playable.GetTime() * frameRate);        // StudioV modified
     }
 
     public override void OnGraphStart(Playable playable) {
       if (!IsPlaying()) {
         return;
       }
-      BeginRecording(playable.GetTime(), Clip.GetExportRoot(playable.GetGraph()));
+      BeginRecording(playable.GetTime() * frameRate, Clip.GetExportRoot(playable.GetGraph()));      // StudioV modified
     }
 
     public override void OnGraphStop(Playable playable) {
       if (!IsPlaying()) {
         return;
       }
-      StopRecording(playable.GetTime());
+      StopRecording(playable.GetTime() * frameRate);        // StudioV modified
     }
 
     public override void ProcessFrame(Playable playable, FrameData info, object playerData) {
@@ -192,7 +194,7 @@ namespace Unity.Formats.USD {
 
     public void OnFrameEnd(Playable playable, FrameData info, object playerData) {
       if (!playable.IsValid()) { return; }
-      ProcessRecording(playable.GetTime(), Clip.GetExportRoot(playable.GetGraph()));
+      ProcessRecording(playable.GetTime() * frameRate, Clip.GetExportRoot(playable.GetGraph()));        // StudioV modified
     }
   }
 }
