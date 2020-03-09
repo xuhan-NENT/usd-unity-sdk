@@ -127,6 +127,9 @@ namespace Unity.Formats.USD {
     [Tooltip("Import policy for primvars:st")]
     public ImportMode m_st;
 
+    [Tooltip("Smoothing angle for recalculating normals")]
+    public float m_smoothingAngle;
+
     // Obselete, will be removed in the future.
     [HideInInspector]
     public ImportMode m_texcoord1;
@@ -319,6 +322,7 @@ namespace Unity.Formats.USD {
       m_normals = options.meshOptions.normals;
       m_tangents = options.meshOptions.tangents;
       m_st = options.meshOptions.texcoord0;
+      m_smoothingAngle = options.meshOptions.smoothingAngle;
       m_texcoord1 = options.meshOptions.texcoord1;
       m_texcoord2 = options.meshOptions.texcoord2;
       m_texcoord3 = options.meshOptions.texcoord3;
@@ -369,6 +373,7 @@ namespace Unity.Formats.USD {
       options.meshOptions.boundingBox = m_boundingBox;
       options.meshOptions.color = m_color;
       options.meshOptions.normals = m_normals;
+      options.meshOptions.smoothingAngle = m_smoothingAngle;
       options.meshOptions.tangents = m_tangents;
       options.meshOptions.texcoord0 = m_st;
       options.meshOptions.texcoord1 = m_texcoord1;

@@ -261,7 +261,10 @@ namespace Unity.Formats.USD {
       usdAsset.m_importMeshes = EditorGUILayout.Toggle("Import Meshes", usdAsset.m_importMeshes);
       usdAsset.m_importSkinning = EditorGUILayout.Toggle("Import Skinning", usdAsset.m_importSkinning);
       usdAsset.m_importTransforms = EditorGUILayout.Toggle("Import Transforms", usdAsset.m_importTransforms);
-
+      
+      GUILayout.Label("Mesh Options", EditorStyles.boldLabel);
+      usdAsset.m_normals = (ImportMode)EditorGUILayout.EnumPopup("Normals", usdAsset.m_normals);
+      usdAsset.m_smoothingAngle = EditorGUILayout.FloatField("Smoothing Angle", usdAsset.m_smoothingAngle);
     }
 
     private void ReloadFromUsd(UsdAsset stageRoot, bool forceRebuild) {

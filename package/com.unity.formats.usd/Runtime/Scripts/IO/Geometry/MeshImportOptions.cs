@@ -109,6 +109,8 @@ namespace Unity.Formats.USD {
     public ImportMode tangents = ImportMode.ImportOrCompute;
     public ImportMode boundingBox = ImportMode.ImportOrCompute;
 
+    public float smoothingAngle = 45f;
+
     // Deprecated.
     public ImportMode texcoord0 = ImportMode.Ignore;
     public ImportMode texcoord1 = ImportMode.Ignore;

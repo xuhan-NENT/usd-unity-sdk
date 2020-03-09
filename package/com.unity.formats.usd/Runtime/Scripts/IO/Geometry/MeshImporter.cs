@@ -438,7 +438,7 @@ namespace Unity.Formats.USD {
       } else if (ShouldCompute(options.meshOptions.normals)) {
         Profiler.BeginSample("Calculate Normals");
         //unityMesh.RecalculateNormals();
-        RecalculateNormals(unityMesh, 45f);       // Toggle back after we have correct weight
+        RecalculateNormals(unityMesh, options.meshOptions.smoothingAngle);       // Toggle back after we have correct weight
         Profiler.EndSample();
       }
 
