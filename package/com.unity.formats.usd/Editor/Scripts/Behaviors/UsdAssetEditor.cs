@@ -169,6 +169,8 @@ namespace Unity.Formats.USD {
       GUILayout.Space(5);
 
       m_tab = GUILayout.Toolbar(m_tab, kTabNames);
+
+      EditorGUI.BeginChangeCheck();
       switch (m_tab) {
         case 0:
           DrawSimpleInspector(usdAsset);
@@ -176,6 +178,9 @@ namespace Unity.Formats.USD {
         case 1:
           base.DrawDefaultInspector();
           break;
+      }
+      if (EditorGUI.EndChangeCheck()) {
+          EditorUtility.SetDirty(usdAsset);
       }
     }
 
@@ -265,6 +270,7 @@ namespace Unity.Formats.USD {
       GUILayout.Label("Mesh Options", EditorStyles.boldLabel);
       usdAsset.m_normals = (ImportMode)EditorGUILayout.EnumPopup("Normals", usdAsset.m_normals);
       usdAsset.m_smoothingAngle = EditorGUILayout.FloatField("Smoothing Angle", usdAsset.m_smoothingAngle);
+
     }
 
     private void ReloadFromUsd(UsdAsset stageRoot, bool forceRebuild) {

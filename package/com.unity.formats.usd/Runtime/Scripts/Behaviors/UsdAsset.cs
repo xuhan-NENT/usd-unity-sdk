@@ -128,7 +128,7 @@ namespace Unity.Formats.USD {
     public ImportMode m_st;
 
     [Tooltip("Smoothing angle for recalculating normals")]
-    public float m_smoothingAngle;
+    public float m_smoothingAngle = 45f;
 
     // Obselete, will be removed in the future.
     [HideInInspector]
